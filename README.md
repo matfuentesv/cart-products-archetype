@@ -1,1 +1,1 @@
-# cart-products-archetype
+# spring-boot-crud-archetype

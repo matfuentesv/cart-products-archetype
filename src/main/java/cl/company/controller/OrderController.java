@@ -1,5 +1,6 @@
 package cl.company.controller;
 
+import cl.company.exception.ApiResponse;
 import cl.company.model.OrderRequest;
 import cl.company.model.OrderResponse;
 import cl.company.service.OrderService;
@@ -20,9 +21,9 @@ public class OrderController {
     private OrderService orderService;
 
     @PostMapping
-    public ResponseEntity<String> createOrder(@RequestBody OrderRequest orderRequest) {
+    public ResponseEntity<ApiResponse> createOrder(@RequestBody OrderRequest orderRequest) {
         orderService.createOrder(orderRequest);
-        return ResponseEntity.ok("Orden creada exitosamente");
+        return ResponseEntity.ok(new ApiResponse("Orden creada con exito",true));
     }
 
     @GetMapping

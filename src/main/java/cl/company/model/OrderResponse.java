@@ -13,6 +13,11 @@ public class OrderResponse {
     private Double totalAmount;
     private List<ProductResponse> products;
 
+    public OrderResponse() {
+
+    }
+
+
     @Data
     @AllArgsConstructor
     public static class ProductResponse {

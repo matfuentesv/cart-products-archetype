@@ -86,4 +86,72 @@ class ApiResponseTest {
         assertNotNull(apiResponse);
         assertFalse(apiResponse.isSuccess());
     }
+
+    @Test
+    public void testEquals_sameObject() {
+        ApiResponse response = new ApiResponse("Success", true);
+        assertEquals(response, response); // Comparación con el mismo objeto
+    }
+
+    @Test
+    public void testEquals_nullObject() {
+        ApiResponse response = new ApiResponse("Success", true);
+        assertNotEquals(null, response); // Comparación con null
+    }
+
+    @Test
+    public void testEquals_differentClass() {
+        ApiResponse response = new ApiResponse("Success", true);
+        assertNotEquals("Not an ApiResponse", response); // Comparación con otro tipo
+    }
+
+    @Test
+    public void testEquals_equalObjects() {
+        ApiResponse response1 = new ApiResponse("Success", true);
+        ApiResponse response2 = new ApiResponse("Success", true);
+        assertEquals(response1, response2); // Objetos con los mismos valores
+        assertEquals(response1.hashCode(), response2.hashCode()); // hashCode debe coincidir
+    }
+
+    @Test
+    public void testEquals_differentValues() {
+        ApiResponse response1 = new ApiResponse("Success", true);
+        ApiResponse response2 = new ApiResponse("Failure", false);
+        assertNotEquals(response1, response2); // Objetos con diferentes valores
+        assertNotEquals(response1.hashCode(), response2.hashCode()); // hashCode no debe coincidir
+    }
+
+    @Test
+    public void testEquals_differentMessageSameSuccess() {
+        ApiResponse response1 = new ApiResponse("Success", true);
+        ApiResponse response2 = new ApiResponse("Partial Success", true);
+        assertNotEquals(response1, response2); // Diferente mensaje pero mismo estado
+    }
+
+    @Test
+     void testToString() {
+        ApiResponse response = new ApiResponse("Success", true);
+        String toStringOutput = response.toString();
+
+        assertTrue(toStringOutput.contains("Success"));
+        assertTrue(toStringOutput.contains("true"));
+    }
+
+    @Test
+     void testGetterAndSetter() {
+        ApiResponse response = new ApiResponse();
+        response.setMessage("Test Message");
+        response.setSuccess(false);
+
+        assertEquals("Test Message", response.getMessage());
+        assertFalse(response.isSuccess());
+    }
+
+    @Test
+     void testEquals_DifferentClass() {
+        ApiResponse response = new ApiResponse("Success",true );
+        String differentClassObject = "Not an ApiResponse";
+
+        assertNotEquals(response, differentClassObject); // Debe retornar false porque son clases diferentes
+    }
 }

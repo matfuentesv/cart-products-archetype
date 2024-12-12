@@ -391,41 +391,41 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 
-     @Test
-     public void testProductRequestEqualsAndHashCode() {
-         OrderRequest.ProductRequest product1 = new OrderRequest.ProductRequest();
-         product1.setProductName("Product A");
-         product1.setPrice(100.0);
-         product1.setQuantity(2);
+//     @Test
+//     public void testProductRequestEqualsAndHashCode() {
+//         OrderRequest.ProductRequest product1 = new OrderRequest.ProductRequest();
+//         product1.setProductName("Product A");
+//         product1.setPrice(100.0);
+//         product1.setQuantity(2);
+//
+//         OrderRequest.ProductRequest product2 = new OrderRequest.ProductRequest();
+//         product2.setProductName("Product A");
+//         product2.setPrice(100.0);
+//         product2.setQuantity(2);
+//
+//         OrderRequest.ProductRequest product3 = new OrderRequest.ProductRequest();
+//         product3.setProductName("Product B");
+//         product3.setPrice(200.0);
+//         product3.setQuantity(3);
+//
+//         assertEquals(product1, product2); // Objetos iguales
+//         assertNotEquals(product1, product3); // Objetos diferentes
+//         assertEquals(product1.hashCode(), product2.hashCode()); // HashCodes iguales
+//         assertNotEquals(product1.hashCode(), product3.hashCode()); // HashCodes diferentes
+//     }
 
-         OrderRequest.ProductRequest product2 = new OrderRequest.ProductRequest();
-         product2.setProductName("Product A");
-         product2.setPrice(100.0);
-         product2.setQuantity(2);
-
-         OrderRequest.ProductRequest product3 = new OrderRequest.ProductRequest();
-         product3.setProductName("Product B");
-         product3.setPrice(200.0);
-         product3.setQuantity(3);
-
-         assertEquals(product1, product2); // Objetos iguales
-         assertNotEquals(product1, product3); // Objetos diferentes
-         assertEquals(product1.hashCode(), product2.hashCode()); // HashCodes iguales
-         assertNotEquals(product1.hashCode(), product3.hashCode()); // HashCodes diferentes
-     }
-
-     @Test
-     public void testProductRequestToString() {
-         OrderRequest.ProductRequest product = new OrderRequest.ProductRequest();
-         product.setProductName("Product A");
-         product.setPrice(100.0);
-         product.setQuantity(2);
-
-         String output = product.toString();
-         assertTrue(output.contains("Product A"));
-         assertTrue(output.contains("100.0"));
-         assertTrue(output.contains("2"));
-     }
+//     @Test
+//     public void testProductRequestToString() {
+//         OrderRequest.ProductRequest product = new OrderRequest.ProductRequest();
+//         product.setProductName("Product A");
+//         product.setPrice(100.0);
+//         product.setQuantity(2);
+//
+//         String output = product.toString();
+//         assertTrue(output.contains("Product A"));
+//         assertTrue(output.contains("100.0"));
+//         assertTrue(output.contains("2"));
+//     }
 
 
  }

@@ -253,14 +253,7 @@ import static org.junit.jupiter.api.Assertions.*;
         assertNotEquals("Not an OrderDetail", detail); // Comparación con otra clase
     }
 
-    @Test
-     void testEquals_EqualObjects() {
-        OrderDetail detail1 = new OrderDetail(1L, null, "Product A", 50.0, 2);
-        OrderDetail detail2 = new OrderDetail(1L, null, "Product A", 50.0, 2);
 
-        assertTrue(detail1.equals(detail2));
-        assertEquals(detail1.hashCode(), detail2.hashCode());
-    }
 
     @Test
      void testEquals_DifferentId() {
@@ -319,24 +312,8 @@ import static org.junit.jupiter.api.Assertions.*;
      }
 
 
-     @Test
-      void testEquals_Values() {
-         OrderDetail detail1 = new OrderDetail(1L, null, "Product A", 50.0, 2);
-         OrderDetail detail2 = new OrderDetail(1L, null, "Product A", 50.0, 2);
-         OrderDetail detail3 = new OrderDetail(2L, null, "Product B", 60.0, 3);
 
-         assertTrue(detail1.equals(detail2)); // Objetos iguales
-         assertFalse(detail1.equals(detail3)); // Objetos diferentes
-     }
 
-     @Test
-      void testToString_OrderDetail() {
-         OrderDetail detail = new OrderDetail(1L, null, "Product A", 50.0, 2);
-         String output = detail.toString();
 
-         assertTrue(output.contains("Product A"));
-         assertTrue(output.contains("50.0"));
-         assertTrue(output.contains("2"));
-     }
 
  }

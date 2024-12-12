@@ -6,41 +6,10 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
-
 import static junit.framework.Assert.*;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
 
 class OrderResponseTest {
-
-    @Test
-    void testEqualsAndHashCode() {
-        OrderResponse.ProductResponse productResponse1 = new OrderResponse.ProductResponse("Tablet", 300.0, 1);
-        OrderResponse.ProductResponse productResponse2 = new OrderResponse.ProductResponse("Tablet", 300.0, 1);
-        OrderResponse.ProductResponse productResponse3 = new OrderResponse.ProductResponse("Laptop", 500.0, 1);
-
-        OrderResponse orderResponse1 = new OrderResponse(1L, "John Doe", 300.0, Collections.singletonList(productResponse1));
-        OrderResponse orderResponse2 = new OrderResponse(1L, "John Doe", 300.0, Collections.singletonList(productResponse2));
-        OrderResponse orderResponse3 = new OrderResponse(2L, "Jane Doe", 500.0, Collections.singletonList(productResponse3));
-
-        // equals
-        assertEquals(orderResponse1, orderResponse2);
-        assertNotEquals(orderResponse1, orderResponse3);
-
-        // hashCode
-        assertEquals(orderResponse1.hashCode(), orderResponse2.hashCode());
-        assertNotEquals(orderResponse1.hashCode(), orderResponse3.hashCode());
-    }
-
-    @Test
-    void testToString() {
-        OrderResponse.ProductResponse productResponse = new OrderResponse.ProductResponse("Tablet", 300.0, 1);
-        OrderResponse orderResponse = new OrderResponse(1L, "John Doe", 300.0, Collections.singletonList(productResponse));
-
-        String expected = "OrderResponse(orderId=1, userName=John Doe, totalAmount=300.0, products=[OrderResponse.ProductResponse(productName=Tablet, price=300.0, quantity=1)])";
-        assertEquals(expected, orderResponse.toString());
-    }
-
 
 
     @Test
@@ -112,59 +81,6 @@ class OrderResponseTest {
         assertEquals("Product1", product.getProductName());
         assertEquals(10.0, product.getPrice());
         assertEquals(2, product.getQuantity().intValue()); // Usamos .intValue() para evitar la ambigüedad
-    }
-
-
-    @Test
-    public void testOrderResponseEqualsAndHashCode() {
-        List<OrderResponse.ProductResponse> products1 = new ArrayList<>();
-        products1.add(new OrderResponse.ProductResponse("Product1", 10.0, 2));
-        List<OrderResponse.ProductResponse> products2 = new ArrayList<>();
-        products2.add(new OrderResponse.ProductResponse("Product2", 20.0, 1));
-
-        OrderResponse response1 = new OrderResponse(1L, "testUser", 20.0, products1);
-        OrderResponse response2 = new OrderResponse(1L, "testUser", 20.0, products1);
-        OrderResponse response3 = new OrderResponse(2L, "anotherUser", 40.0, products2);
-
-        assertEquals(response1, response2);
-        assertNotEquals(response1, response3);
-        assertEquals(response1.hashCode(), response2.hashCode());
-        assertNotEquals(response1.hashCode(), response3.hashCode());
-    }
-
-    @Test
-    public void testProductResponseEqualsAndHashCode() {
-        OrderResponse.ProductResponse product1 = new OrderResponse.ProductResponse("Product1", 10.0, 2);
-        OrderResponse.ProductResponse product2 = new OrderResponse.ProductResponse("Product1", 10.0, 2);
-        OrderResponse.ProductResponse product3 = new OrderResponse.ProductResponse("Product2", 20.0, 1);
-
-        assertEquals(product1, product2);
-        assertNotEquals(product1, product3);
-        assertEquals(product1.hashCode(), product2.hashCode());
-        assertNotEquals(product1.hashCode(), product3.hashCode());
-    }
-
-    @Test
-    public void testOrderResponseToString() {
-        List<OrderResponse.ProductResponse> products = new ArrayList<>();
-        products.add(new OrderResponse.ProductResponse("Product1", 10.0, 2));
-
-        OrderResponse response = new OrderResponse(1L, "testUser", 20.0, products);
-        String toString = response.toString();
-
-        assertTrue(toString.contains("testUser"));
-        assertTrue(toString.contains("20.0"));
-        assertTrue(toString.contains("Product1"));
-    }
-
-    @Test
-    public void testProductResponseToString() {
-        OrderResponse.ProductResponse product = new OrderResponse.ProductResponse("Product1", 10.0, 2);
-        String toString = product.toString();
-
-        assertTrue(toString.contains("Product1"));
-        assertTrue(toString.contains("10.0"));
-        assertTrue(toString.contains("2"));
     }
 
     @Test

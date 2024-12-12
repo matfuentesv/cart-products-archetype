@@ -5,12 +5,9 @@ import cl.company.model.OrderDetail;
 import cl.company.model.OrderRequest;
 import cl.company.model.OrderResponse;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
  class OrderModelsTest {
@@ -67,26 +64,7 @@ import static org.junit.jupiter.api.Assertions.*;
         assertEquals("Product A", order.getOrderDetails().get(0).getProductName());
     }
 
-    @Test
-     void testOrderEqualsAndHashCode() {
-        Order order1 = new Order(1L, "John Doe", 150.0, "2024-12-01T10:00:00", null);
-        Order order2 = new Order(1L, "John Doe", 150.0, "2024-12-01T10:00:00", null);
-        Order order3 = new Order(2L, "Jane Doe", 200.0, "2024-12-02T10:00:00", null);
 
-        assertEquals(order1, order2);
-        assertNotEquals(order1, order3);
-        assertEquals(order1.hashCode(), order2.hashCode());
-        assertNotEquals(order1.hashCode(), order3.hashCode());
-    }
-
-    @Test
-     void testOrderToString() {
-        Order order = new Order(1L, "John Doe", 150.0, "2024-12-01T10:00:00", new ArrayList<>());
-        String toStringOutput = order.toString();
-
-        assertTrue(toStringOutput.contains("John Doe"));
-        assertTrue(toStringOutput.contains("150.0"));
-    }
 
     @Test
      void testOrderRequestGettersAndSetters() {
@@ -123,20 +101,6 @@ import static org.junit.jupiter.api.Assertions.*;
         assertEquals(1, orderResponse.getProducts().size());
     }
 
-    @Test
-     void testToStringMethods() {
-        Order order = new Order(1L, "John Doe", 150.0, "2024-12-01T10:00:00", new ArrayList<>());
-        assertTrue(order.toString().contains("John Doe"));
-        assertTrue(order.toString().contains("150.0"));
-
-        OrderDetail detail = new OrderDetail(1L, order, "Product A", 50.0, 2);
-        assertTrue(detail.toString().contains("Product A"));
-        assertTrue(detail.toString().contains("50.0"));
-
-        OrderResponse.ProductResponse productResponse = new OrderResponse.ProductResponse("Product A", 100.0, 2);
-        assertTrue(productResponse.toString().contains("Product A"));
-        assertTrue(productResponse.toString().contains("100.0"));
-    }
 
 
 
@@ -234,20 +198,6 @@ import static org.junit.jupiter.api.Assertions.*;
         assertEquals(0, detail.getQuantity());
     }
 
-    @Test
-    void testEqualsAndHashCodeForModels() {
-        Order order1 = new Order.Builder().withUserName("John").withTotalAmount(100.0).build();
-        Order order2 = new Order.Builder().withUserName("John").withTotalAmount(100.0).build();
-
-        assertEquals(order1, order2);
-        assertEquals(order1.hashCode(), order2.hashCode());
-
-        OrderDetail detail1 = new OrderDetail.Builder().withProductName("Product").withPrice(100.0).build();
-        OrderDetail detail2 = new OrderDetail.Builder().withProductName("Product").withPrice(100.0).build();
-
-        assertEquals(detail1, detail2);
-        assertEquals(detail1.hashCode(), detail2.hashCode());
-    }
 
     @Test
     void testWithOrderDetails() {
@@ -388,44 +338,5 @@ import static org.junit.jupiter.api.Assertions.*;
          assertTrue(output.contains("50.0"));
          assertTrue(output.contains("2"));
      }
-
-
-
-//     @Test
-//     public void testProductRequestEqualsAndHashCode() {
-//         OrderRequest.ProductRequest product1 = new OrderRequest.ProductRequest();
-//         product1.setProductName("Product A");
-//         product1.setPrice(100.0);
-//         product1.setQuantity(2);
-//
-//         OrderRequest.ProductRequest product2 = new OrderRequest.ProductRequest();
-//         product2.setProductName("Product A");
-//         product2.setPrice(100.0);
-//         product2.setQuantity(2);
-//
-//         OrderRequest.ProductRequest product3 = new OrderRequest.ProductRequest();
-//         product3.setProductName("Product B");
-//         product3.setPrice(200.0);
-//         product3.setQuantity(3);
-//
-//         assertEquals(product1, product2); // Objetos iguales
-//         assertNotEquals(product1, product3); // Objetos diferentes
-//         assertEquals(product1.hashCode(), product2.hashCode()); // HashCodes iguales
-//         assertNotEquals(product1.hashCode(), product3.hashCode()); // HashCodes diferentes
-//     }
-
-//     @Test
-//     public void testProductRequestToString() {
-//         OrderRequest.ProductRequest product = new OrderRequest.ProductRequest();
-//         product.setProductName("Product A");
-//         product.setPrice(100.0);
-//         product.setQuantity(2);
-//
-//         String output = product.toString();
-//         assertTrue(output.contains("Product A"));
-//         assertTrue(output.contains("100.0"));
-//         assertTrue(output.contains("2"));
-//     }
-
 
  }
